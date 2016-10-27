@@ -1,12 +1,20 @@
 package controller;
 
+import view.JGameFrame;
+
 public class Controller
 {
-
+	private JGameFrame baseFrame;
+	
 	public void start()
 	{
-		// TODO Auto-generated method stub
 		
+		
+	}
+	
+	public Controller()
+	{
+		baseFrame = new JGameFrame(this);
 	}
 
 }

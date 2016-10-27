@@ -1,16 +1,24 @@
 package view;
 
 import javax.swing.JPanel;
+import javax.swing.SpringLayout;
 
 import controller.Controller;
+
+import java.awt.Color;
+import java.awt.Graphics;
 
 public class JGamePanel extends JPanel
 {
 	private Controller baseContoller;
+	
+	private SpringLayout baseLayout;
 
 	public JGamePanel(Controller baseController)
 	{
 		this.baseContoller = baseController;
+		baseLayout = new SpringLayout();
+		
 		
 		setupPanel();
 		setupLayout();
@@ -18,10 +26,19 @@ public class JGamePanel extends JPanel
 		
 	}
 
-
+	 @Override
+     public void paintComponent(Graphics g) 
+	 {
+         super.paintComponent(g);
+         g.drawRect(200, 200, 200, 200);
+     }
+	
+	
 	private void setupPanel()
 	{
-		// TODO Auto-generated method stub
+		this.setLayout(baseLayout);
+		this.setBackground(Color.YELLOW);
+		
 		
 	}
 	
