@@ -19,7 +19,9 @@ public class JGameFrame extends JFrame
 		this.baseController = baseController;
 		basePanel = new JGamePanel(baseController);
 		
+		
 		controlls = new Controlls();
+		//adding a key listener
 		addKeyListener(controlls);
 		
 		setupFrame();

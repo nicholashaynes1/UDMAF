@@ -13,25 +13,14 @@ public class JGamePanel extends JPanel
 {
 	private Controller baseContoller;
 	private SpringLayout baseLayout;
-	
-	
 	private static Player player;
-	
-	
-	
-	
-	
+
 	public JGamePanel(Controller baseController)
 	{
 		this.baseContoller = baseController;
 		baseLayout = new SpringLayout();
 		
-		
-		
 		player = new Player(100,100);
-		System.out.println("here 1");
-		
-		
 		
 		setupPanel();
 		setupLayout();

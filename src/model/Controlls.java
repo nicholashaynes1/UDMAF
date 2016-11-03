@@ -3,6 +3,11 @@ package model;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * This class holds all the methods that have to do with keyboard based movement.
+ * @author nick
+ *
+ */
 public class Controlls implements KeyListener
 {
 	public Controlls() 
@@ -10,11 +15,12 @@ public class Controlls implements KeyListener
 		
 	}
 
+	//Checks for a key pressed event
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
 		int Key = e.getKeyCode();
-		if(Key == KeyEvent.VK_RIGHT)
+		if(Key == KeyEvent.VK_D)
 		{
 			Player.X ++;
 		}
@@ -30,13 +36,7 @@ public class Controlls implements KeyListener
 
 	@Override
 	public void keyTyped(KeyEvent e)
-	{
-		int Key = e.getKeyCode();
-		if(Key == KeyEvent.VK_RIGHT)
-		{
-			Player.X += 100;
-		}
-		
+	{	
 		
 	}
 	
