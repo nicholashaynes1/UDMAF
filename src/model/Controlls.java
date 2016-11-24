@@ -24,6 +24,18 @@ public class Controlls implements KeyListener
 		{
 			Player.X ++;
 		}
+		if(Key == KeyEvent.VK_A)
+		{
+			Player.X --;
+		}
+		if(Key == KeyEvent.VK_S)
+		{
+			Player.Y ++;
+		}
+		if(Key == KeyEvent.VK_W)
+		{
+			Player.Y --;
+		}
 		
 	}
 

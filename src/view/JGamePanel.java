@@ -23,6 +23,7 @@ public class JGamePanel extends JPanel
 	private SpringLayout baseLayout;
 	private static Player player;
 	private JLabel testDisplay;
+	private BufferedImage img;
 	
 
 	public JGamePanel(Controller baseController)
@@ -31,6 +32,8 @@ public class JGamePanel extends JPanel
 		baseLayout = new SpringLayout();
 		
 		player = new Player(10,10);
+		
+		
 		
 		
 		setupPanel();
@@ -52,6 +55,20 @@ public class JGamePanel extends JPanel
          {
          e.printStackTrace();
          }
+         
+        //draws specific parts of the image adn only renders those spots.
+		try
+		{
+			img = ImageIO.read(getClass().getResource("/images/satan.png"));
+			img = img.getSubimage(0, 0, 40, 40); // 500 x 500
+			g.drawImage(img, 0, 0, this);
+			
+		} catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+         
 		
 		repaint();
      }
