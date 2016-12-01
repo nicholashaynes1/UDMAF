@@ -24,6 +24,8 @@ public class JGameFrame extends JFrame
 		//adding a key listener
 		addKeyListener(controlls);
 		
+		
+		
 		setupFrame();
 	}
 	
@@ -31,7 +33,7 @@ public class JGameFrame extends JFrame
 	{
 		this.setContentPane(basePanel);
 		this.setResizable(false);
-		this.setSize(700,700);
+		this.setSize(java.awt.Toolkit.getDefaultToolkit().getScreenSize());
 		this.setVisible(true);
 		
 	}

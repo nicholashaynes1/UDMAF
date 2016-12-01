@@ -39,7 +39,7 @@ public class JGamePanel extends JPanel
 		setupPanel();
 		setupLayout();
 		
-	}
+	}								
 	@Override
      public void paintComponent(Graphics g) 
 	 {
