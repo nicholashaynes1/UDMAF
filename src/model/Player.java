@@ -3,6 +3,7 @@ package model;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
@@ -14,13 +15,55 @@ import javax.imageio.ImageIO;
  */
 public class Player
 {
-	public static int X , Y;
+	private static int X , Y;
 	
-	public Player(int playerX, int playerY)
+	public Player()
 	{
-		this.X = playerX;
-		this.Y = playerY;
 		
+		
+	}
+
+	public static int getX()
+	{
+		return X;
+	}
+
+	public static void setX(int x)
+	{
+		X = x;
+	}
+
+	public static int getY()
+	{
+		return Y;
+	}
+
+	public static void setY(int y)
+	{
+		Y = y;
+	}
+	
+	public static void saveState(boolean save)
+	{
+		if(save = true)
+		{
+			System.out.println(0);
+			try
+			{
+				TimeUnit.MICROSECONDS.sleep(10);
+				save = false;
+			} 
+			catch (InterruptedException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		if(save = false)
+		{
+			System.out.println(1);
+		}
 		
 		
 	}

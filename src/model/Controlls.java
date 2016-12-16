@@ -22,19 +22,23 @@ public class Controlls implements KeyListener
 		int Key = e.getKeyCode();
 		if(Key == KeyEvent.VK_D)
 		{
-			Player.X ++;
+			Player.setX(Player.getX() + 1);
 		}
 		if(Key == KeyEvent.VK_A)
 		{
-			Player.X --;
+			Player.setX(Player.getX() - 1);
 		}
 		if(Key == KeyEvent.VK_S)
 		{
-			Player.Y ++;
+			Player.setY(Player.getY() + 1);
 		}
 		if(Key == KeyEvent.VK_W)
 		{
-			Player.Y --;
+			Player.setY(Player.getY() - 1);
+		}
+		if(Key == KeyEvent.VK_ESCAPE)
+		{
+			Player.saveState(true);
 		}
 		
 	}

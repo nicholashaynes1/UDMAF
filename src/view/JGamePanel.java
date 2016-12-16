@@ -31,7 +31,7 @@ public class JGamePanel extends JPanel
 		this.baseContoller = baseController;
 		baseLayout = new SpringLayout();
 		
-		player = new Player(10,10);
+		player = new Player();
 		
 		
 		
@@ -49,7 +49,7 @@ public class JGamePanel extends JPanel
          try 
          {
          playerImg = ImageIO.read(getClass().getResource("/images/satan.png"));
-         g.drawImage(playerImg, player.X, player.Y, this);
+         g.drawImage(playerImg, player.getX(), player.getY(), this);
          } 
          catch (IOException e) 
          {
