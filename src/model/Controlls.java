@@ -2,6 +2,7 @@ package model;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.concurrent.TimeUnit;
 
 /**
  * This class holds all the methods that have to do with keyboard based movement.
@@ -38,7 +39,7 @@ public class Controlls implements KeyListener
 		}
 		if(Key == KeyEvent.VK_ESCAPE)
 		{
-			Player.saveState(true);
+			Player.setSaveState(true);
 		}
 		
 	}
