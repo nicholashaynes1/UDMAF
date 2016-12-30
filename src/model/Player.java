@@ -9,8 +9,7 @@ import java.util.Scanner;
 /**
  * The player class that holds all player info
  * @author nick
- * @param Takes in a X and Y ints for coordinates
- * @param File location
+ *
  */
 public class Player
 {
@@ -23,6 +22,8 @@ public class Player
 	
 	public Player()
 	{
+		
+		
 		try
 		{
 			//Scanner reads the PlayerFile 
@@ -76,7 +77,7 @@ public class Player
 	{
 		if(saveState = true)
 		{
-			fileFormatter.format("hello");
+			fileFormatter.format(toString(""));
 			closeFile();
 		}
 	}
@@ -84,6 +85,14 @@ public class Player
 	{
 		fileFormatter.close();
 	}
+	
+	private String toString(String xString)
+	{
+		xString = Integer.toString(X);
+		return xString;
+		
+	}
+	
 
 	
 	
