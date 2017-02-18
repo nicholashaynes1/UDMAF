@@ -24,6 +24,7 @@ public class JGamePanel extends JPanel
 	private static Player player;
 	private JLabel testDisplay;
 	private BufferedImage img;
+	private BufferedImage playerImg;
 	
 
 	public JGamePanel(Controller baseController)
@@ -44,23 +45,12 @@ public class JGamePanel extends JPanel
      public void paintComponent(Graphics g) 
 	 {
          super.paintComponent(g);
-         //loads the player image.
-         Image playerImg; 
-         try 
-         {
-         playerImg = ImageIO.read(getClass().getResource("/images/satan.png"));
-         g.drawImage(playerImg, player.getX(), player.getY(), this);
-         } 
-         catch (IOException e) 
-         {
-         e.printStackTrace();
-         }
-         
-        //draws specific parts of the image adn only renders those spots.
+ 
+        //draws specific parts of the image and only renders those spots.
 		try
 		{
-			img = ImageIO.read(getClass().getResource("/images/satan.png"));
-			img = img.getSubimage(0, 0, 40, 40); // 500 x 500
+			img = ImageIO.read(getClass().getResource("/images/testMap.png"));
+			img = img.getSubimage(0, 0, 1920, 1080); // 500 x 500
 			g.drawImage(img, 0, 0, this);
 			
 		} catch (IOException e)
@@ -68,6 +58,20 @@ public class JGamePanel extends JPanel
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+		
+		//loads the player image.
+      
+        try 
+        {
+       	 //finds the player image
+       	 playerImg = ImageIO.read(getClass().getResource("/images/testSpriteSheet.png"));
+       	 playerImg = playerImg.getSubimage(0, 0, 40, 40); // 500 x 500
+       	 g.drawImage(playerImg, player.getX(), player.getY(), this);
+        } 
+        catch (IOException e) 
+        {
+       	 e.printStackTrace();
+        }
          
 		
 		repaint();
@@ -78,7 +82,7 @@ public class JGamePanel extends JPanel
 	private void setupPanel()
 	{
 		this.setLayout(baseLayout);
-		this.setBackground(Color.YELLOW);
+		this.setBackground(Color.WHITE);
 		
 		
 		

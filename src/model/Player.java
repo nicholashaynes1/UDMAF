@@ -28,16 +28,18 @@ public class Player
 		{
 			//Scanner reads the PlayerFile 
 			playerFileScanner = new Scanner(new File("PlayerFile.txt"));
-		} catch (FileNotFoundException e)
+		} 
+		catch (FileNotFoundException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		try
-		{
+		{	//formats the file
 			fileFormatter = new Formatter("PlayerFile.txt");
-		} catch (FileNotFoundException e)
+		} 
+		catch (FileNotFoundException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -46,6 +48,40 @@ public class Player
 		saveX();
 	}
 
+	public static void setSaveState(boolean saveState)
+	{
+		Player.saveState = saveState;
+	}
+	
+	/**
+	 * Saves the X-coordinate to the PlayerFile.txt
+	 */
+	private void saveX()
+	{
+		if(saveState = true)
+		{
+			fileFormatter.format(toString(""));
+			closeFile();
+		}
+	}
+	
+	private void closeFile()
+	{
+		fileFormatter.close();
+	}
+	
+	private String toString(String xString)
+	{
+		xString = Integer.toString(X);
+		return xString;
+		
+	}
+	
+	public void loadPlayerImage()
+	{
+		
+	}
+	
 	public static int getX()
 	{
 		return X;
@@ -64,33 +100,6 @@ public class Player
 	public static void setY(int y)
 	{
 		Y = y;
-	}
-	
-	public static void setSaveState(boolean saveState)
-	{
-		Player.saveState = saveState;
-	}
-	/**
-	 * Saves the X-coordinate to the PlayerFile.txt
-	 */
-	private void saveX()
-	{
-		if(saveState = true)
-		{
-			fileFormatter.format(toString(""));
-			closeFile();
-		}
-	}
-	private void closeFile()
-	{
-		fileFormatter.close();
-	}
-	
-	private String toString(String xString)
-	{
-		xString = Integer.toString(X);
-		return xString;
-		
 	}
 	
 
