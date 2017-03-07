@@ -77,10 +77,6 @@ public class Player
 		
 	}
 	
-	public void loadPlayerImage()
-	{
-		
-	}
 	
 	public static int getX()
 	{
