@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class Controlls implements KeyListener
 {
-	private boolean isWalking = false;
+	private static boolean isWalking;
 	
 	
 	
@@ -30,7 +30,7 @@ public class Controlls implements KeyListener
 		{
 			Player.setX(Player.getX() + 1);
 			isWalking = true;
-			System.out.println(isWalking);
+			
 		}
 		if(Key == KeyEvent.VK_A)
 		{
@@ -61,7 +61,6 @@ public class Controlls implements KeyListener
 		if(Key == KeyEvent.VK_D)
 		{
 			isWalking = false;
-			System.out.println(isWalking);
 		}
 		if(Key == KeyEvent.VK_A)
 		{
@@ -88,12 +87,9 @@ public class Controlls implements KeyListener
 	public boolean isWalking()
 	{
 		return isWalking;
+		
 	}
 
-	public void setWalking(boolean isWalking)
-	{
-		this.isWalking = isWalking;
-	}
 	
 	
 }

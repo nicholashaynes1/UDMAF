@@ -33,31 +33,14 @@ public class JGamePanel extends JPanel
 	//Timer to track the changed image to draw
 	private Timer walkAnimationTimer;
 	
-	private int[][] walkAnimationDrawWidth2dArray;
-	private int[][] walkAnimationDrawHeight2dArray;
+	private int[] walkAnimationDrawWidthArray;
+	private int[] walkAnimationDrawXArray;
 	
-	//predetermined walk spritesheet heights and widths;
-	private int walkDimensionWidth0 = 40;
-	private int walkDimensionWidth1 = 40;
-	private int walkDimensionWidth2 = 40;
-	private int walkDimensionWidth3 = 40;
-	private int walkDimensionWidth4 = 40;
-	private int walkDimensionWidth5 = 40;
-	private int walkDimensionWidth6 = 40;
-	private int walkDimensionWidth7 = 40;
-	
-	private int walkDimensionHeight0 = 80;
-	private int walkDimensionHeight1 = 80;
-	private int walkDimensionHeight2 = 80;
-	private int walkDimensionHeight3 = 80;
-	private int walkDimensionHeight4 = 80;
-	private int walkDimensionHeight5 = 80;
-	private int walkDimensionHeight6 = 80;
-	private int walkDimensionHeight7 = 80;
 	
 	//ints used to draw the sprites width and height
-	private int playerDrawWidth,playerDrawHeight;
+	private int playerDrawWidth = 40,playerDrawX = 0;
 	
+	private int animationFrame = 0;
 	
 
 	public JGamePanel(Controller baseController)
@@ -72,32 +55,34 @@ public class JGamePanel extends JPanel
 		//This timer times the walk animation
 		walkAnimationTimer = new Timer();
 		
-		//this 2d array keep track of the draw width of the sprite sheet
-		walkAnimationDrawWidth2dArray = new int[8][];
-		walkAnimationDrawWidth2dArray[0] = new int[40];
-		walkAnimationDrawWidth2dArray[1] = new int[40];
-		walkAnimationDrawWidth2dArray[3] = new int[40];
-		walkAnimationDrawWidth2dArray[4] = new int[40];
-		walkAnimationDrawWidth2dArray[5] = new int[40];
-		walkAnimationDrawWidth2dArray[6] = new int[40];
-		walkAnimationDrawWidth2dArray[7] = new int[40];
-		
-		//this 2d array keep track of the draw height of the sprite sheet
-		walkAnimationDrawHeight2dArray = new int [8][];
-		walkAnimationDrawHeight2dArray[0] = new int[80];
-		walkAnimationDrawHeight2dArray[1] = new int[80];
-		walkAnimationDrawHeight2dArray[2] = new int[80];
-		walkAnimationDrawHeight2dArray[3] = new int[80];
-		walkAnimationDrawHeight2dArray[4] = new int[80];
-		walkAnimationDrawHeight2dArray[5] = new int[80];
-		walkAnimationDrawHeight2dArray[6] = new int[80];
-		walkAnimationDrawHeight2dArray[7] = new int[80];
+		//this array keep track of the draw width of the sprite sheet
+		walkAnimationDrawWidthArray = new int[8];
+		walkAnimationDrawWidthArray[0] = 40;
+		walkAnimationDrawWidthArray[1] = 35;
+		walkAnimationDrawWidthArray[2] = 30;
+		walkAnimationDrawWidthArray[3] = 30;
+		walkAnimationDrawWidthArray[4] = 40;
+		walkAnimationDrawWidthArray[5] = 40;
+		walkAnimationDrawWidthArray[6] = 28;
+		walkAnimationDrawWidthArray[7] = 20;
+//		
+		//this array keep track of the draw height of the sprite sheet
+		walkAnimationDrawXArray = new int [8];
+		walkAnimationDrawXArray[0] = 0;
+		walkAnimationDrawXArray[1] = 40;
+		walkAnimationDrawXArray[2] = 70;
+		walkAnimationDrawXArray[3] = 95;
+		walkAnimationDrawXArray[4] = 125;
+		walkAnimationDrawXArray[5] = 160;
+		walkAnimationDrawXArray[6] = 187;
+		walkAnimationDrawXArray[7] = 220;
 		
 		
 		
 		
 		setupPanel();
 		setupLayout();
+		animateWalk();
 		
 	}								
 	@Override
@@ -124,7 +109,7 @@ public class JGamePanel extends JPanel
         {
        	 //finds the player image.
        	 playerImg = ImageIO.read(getClass().getResource("/images/PlayerImage.png"));
-       	 playerImg = playerImg.getSubimage(10, 10, 40, 80); // 500 x 500
+       	 playerImg = playerImg.getSubimage(playerDrawX, 0, playerDrawWidth, 83); // 241 x 83
        	 
        	 //draws the player image.
        	 g.drawImage(playerImg, player.getX(), player.getY(), this);
@@ -143,20 +128,42 @@ public class JGamePanel extends JPanel
 	 */
 	private void animateWalk()
 	{
-		if(baseControlls.isWalking() == true)
-		{
+		
 			walkAnimationTimer.scheduleAtFixedRate(new TimerTask()
 					{
 
 						@Override
 						public void run()
 						{
+							if(baseControlls.isWalking() == true)
+							{
+								
+								if(animationFrame == 7)
+								{
+									animationFrame = 0;
+								}
+								else
+								{
+									playerDrawWidth = walkAnimationDrawWidthArray[animationFrame];
+									playerDrawX = walkAnimationDrawXArray[animationFrame]; 
+									
+									animationFrame++;
+								}
+								
+								
+							}
+							else
+							{
+								playerDrawWidth = walkAnimationDrawWidthArray[0];
+								playerDrawX = walkAnimationDrawXArray[0];
+							}
+							
 							
 							
 						}
 				
-					}, 1000, 1000);
-		}
+					}, 100, 100);
+		
 		
 	}
 	
