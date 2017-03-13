@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import model.Animation;
 import model.Controlls;
 import model.Player;
 
@@ -30,17 +31,14 @@ public class JGamePanel extends JPanel
 	//Player Image stuff
 	private BufferedImage img;
 	private BufferedImage playerImg;
-	//Timer to track the changed image to draw
-	private Timer walkAnimationTimer;
 	
+	//player animation.
 	private int[] walkAnimationDrawWidthArray;
 	private int[] walkAnimationDrawXArray;
+	private Animation animationClass;
 	
 	
-	//ints used to draw the sprites width and height
-	private int playerDrawWidth = 40,playerDrawX = 0;
 	
-	private int animationFrame = 0;
 	
 
 	public JGamePanel(Controller baseController)
@@ -53,7 +51,6 @@ public class JGamePanel extends JPanel
 		baseControlls = new Controlls();
 		
 		//This timer times the walk animation
-		walkAnimationTimer = new Timer();
 		
 		//this array keep track of the draw width of the sprite sheet
 		walkAnimationDrawWidthArray = new int[8];
@@ -78,11 +75,13 @@ public class JGamePanel extends JPanel
 		walkAnimationDrawXArray[7] = 220;
 		
 		
+		animationClass = new Animation();
 		
+		animationClass.animateWalk(walkAnimationDrawWidthArray, walkAnimationDrawXArray);
 		
 		setupPanel();
 		setupLayout();
-		animateWalk();
+		
 		
 	}								
 	@Override
@@ -109,7 +108,7 @@ public class JGamePanel extends JPanel
         {
        	 //finds the player image.
        	 playerImg = ImageIO.read(getClass().getResource("/images/PlayerImage.png"));
-       	 playerImg = playerImg.getSubimage(playerDrawX, 0, playerDrawWidth, 83); // 241 x 83
+       	 playerImg = playerImg.getSubimage(animationClass.getPlayerDrawX(), 0, animationClass.getPlayerDrawWidth(), 83); // 241 x 83
        	 
        	 //draws the player image.
        	 g.drawImage(playerImg, player.getX(), player.getY(), this);
@@ -123,49 +122,8 @@ public class JGamePanel extends JPanel
 		repaint();
      }
 	
-	/**
-	 * Animates the walk cycle
-	 */
-	private void animateWalk()
-	{
-		
-			walkAnimationTimer.scheduleAtFixedRate(new TimerTask()
-					{
-
-						@Override
-						public void run()
-						{
-							if(baseControlls.isWalking() == true)
-							{
-								
-								if(animationFrame == 7)
-								{
-									animationFrame = 0;
-								}
-								else
-								{
-									playerDrawWidth = walkAnimationDrawWidthArray[animationFrame];
-									playerDrawX = walkAnimationDrawXArray[animationFrame]; 
-									
-									animationFrame++;
-								}
-								
-								
-							}
-							else
-							{
-								playerDrawWidth = walkAnimationDrawWidthArray[0];
-								playerDrawX = walkAnimationDrawXArray[0];
-							}
-							
-							
-							
-						}
-				
-					}, 100, 100);
-		
-		
-	}
+	
+	
 	
 	private void setupPanel()
 	{
