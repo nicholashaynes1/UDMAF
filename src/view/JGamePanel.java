@@ -32,9 +32,7 @@ public class JGamePanel extends JPanel
 	private BufferedImage img;
 	private BufferedImage playerImg;
 	
-	//player animation.
-	private int[] walkAnimationDrawWidthArray;
-	private int[] walkAnimationDrawXArray;
+	//Animation decleration
 	private Animation animationClass;
 	
 	
@@ -49,35 +47,10 @@ public class JGamePanel extends JPanel
 		//Class instantiation
 		player = new Player();
 		baseControlls = new Controlls();
-		
-		//This timer times the walk animation
-		
-		//this array keep track of the draw width of the sprite sheet
-		walkAnimationDrawWidthArray = new int[8];
-		walkAnimationDrawWidthArray[0] = 40;
-		walkAnimationDrawWidthArray[1] = 35;
-		walkAnimationDrawWidthArray[2] = 30;
-		walkAnimationDrawWidthArray[3] = 30;
-		walkAnimationDrawWidthArray[4] = 40;
-		walkAnimationDrawWidthArray[5] = 40;
-		walkAnimationDrawWidthArray[6] = 28;
-		walkAnimationDrawWidthArray[7] = 20;
-//		
-		//this array keep track of the draw height of the sprite sheet
-		walkAnimationDrawXArray = new int [8];
-		walkAnimationDrawXArray[0] = 0;
-		walkAnimationDrawXArray[1] = 40;
-		walkAnimationDrawXArray[2] = 70;
-		walkAnimationDrawXArray[3] = 95;
-		walkAnimationDrawXArray[4] = 125;
-		walkAnimationDrawXArray[5] = 160;
-		walkAnimationDrawXArray[6] = 187;
-		walkAnimationDrawXArray[7] = 220;
-		
-		
 		animationClass = new Animation();
 		
-		animationClass.animateWalk(walkAnimationDrawWidthArray, walkAnimationDrawXArray);
+		//Calling the animation class  
+		animationClass.animateWalk(player.getWalkAnimationDrawWidthArray(), player.getWalkAnimationDrawXArray());
 		
 		setupPanel();
 		setupLayout();
@@ -107,8 +80,8 @@ public class JGamePanel extends JPanel
         try 
         {
        	 //finds the player image.
-       	 playerImg = ImageIO.read(getClass().getResource("/images/PlayerImage.png"));
-       	 playerImg = playerImg.getSubimage(animationClass.getPlayerDrawX(), 0, animationClass.getPlayerDrawWidth(), 83); // 241 x 83
+       	 playerImg = ImageIO.read(getClass().getResource("/images/WalkingSpriteSheet.png"));
+       	 playerImg = playerImg.getSubimage(0, 250, 650, 400); // 650x750
        	 
        	 //draws the player image.
        	 g.drawImage(playerImg, player.getX(), player.getY(), this);
