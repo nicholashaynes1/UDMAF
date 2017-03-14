@@ -12,6 +12,7 @@ public class Animation
 	private Timer walkTimer;
 	private Controlls baseControlls;
 	private int animationFrame = 0;
+	private int arraySize = 0;
 	private static int playerDrawWidth = 40,playerDrawX = 0;
 	
 	public Animation()
@@ -29,6 +30,8 @@ public class Animation
 	 */
 	public void animateWalk(int[] widthDrawArray, int[] xDrawArray)
 	{
+		
+		
 		walkTimer.scheduleAtFixedRate(new TimerTask()
 				{
 
@@ -38,7 +41,7 @@ public class Animation
 						if(baseControlls.isWalking() == true)
 						{
 							
-							if(animationFrame == 7)
+							if(animationFrame == widthDrawArray.length)
 							{
 								animationFrame = 0;
 							}
