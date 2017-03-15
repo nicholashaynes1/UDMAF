@@ -22,34 +22,47 @@ public class Player
 	private Formatter fileFormatter;
 	
 	//arrays to hold the draw length 
-	private  int[] walkAnimationDrawWidthArray;
+	private int[] walkAnimationDrawHeightArray;
+	private int[] walkAnimationDrawWidthArray;
+	
 	private  int[] walkAnimationDrawXArray;
+	private  int[] walkAnimationDrawYArray;
 	
 	
 	
 	
 	public Player()
 	{
-		walkAnimationDrawWidthArray = new int[8];
-		walkAnimationDrawWidthArray[0] = 40;
-		walkAnimationDrawWidthArray[1] = 35;
-		walkAnimationDrawWidthArray[2] = 30;
-		walkAnimationDrawWidthArray[3] = 30;
-		walkAnimationDrawWidthArray[4] = 40;
-		walkAnimationDrawWidthArray[5] = 40;
-		walkAnimationDrawWidthArray[6] = 28;
-		walkAnimationDrawWidthArray[7] = 20;
-//		
-		//this array keep track of the draw height of the sprite sheet
-		walkAnimationDrawXArray = new int [8];
+		//Array that controls the width
+		walkAnimationDrawWidthArray = new int[4];
+		walkAnimationDrawWidthArray[0] = 200;
+		walkAnimationDrawWidthArray[1] = 200;
+		walkAnimationDrawWidthArray[2] = 220;
+		walkAnimationDrawWidthArray[3] = 200;
+		
+		//Array that controls the height
+		walkAnimationDrawHeightArray = new int[4];
+		walkAnimationDrawHeightArray[0] = 400;
+		walkAnimationDrawHeightArray[1] = 250;
+		walkAnimationDrawHeightArray[2] = 250;
+		walkAnimationDrawHeightArray[3] = 30;
+		
+		//Array that controls the x
+		walkAnimationDrawXArray = new int[4];
 		walkAnimationDrawXArray[0] = 0;
-		walkAnimationDrawXArray[1] = 40;
-		walkAnimationDrawXArray[2] = 70;
-		walkAnimationDrawXArray[3] = 95;
-		walkAnimationDrawXArray[4] = 125;
-		walkAnimationDrawXArray[5] = 160;
-		walkAnimationDrawXArray[6] = 187;
-		walkAnimationDrawXArray[7] = 220;
+		walkAnimationDrawXArray[1] = 210;
+		walkAnimationDrawXArray[2] = 195;
+		walkAnimationDrawXArray[3] = 0;
+		
+		//Array that controls the y
+		walkAnimationDrawYArray = new int [4];
+		walkAnimationDrawYArray[0] = 250;
+		walkAnimationDrawYArray[1] = 0;
+		walkAnimationDrawYArray[2] = 0;
+		walkAnimationDrawYArray[3] = 0;
+		
+		
+		
 		
 		
 		try
@@ -126,13 +139,25 @@ public class Player
 		Y = y;
 	}
 
-	public  int[] getWalkAnimationDrawWidthArray() {
+	public int[] getWalkAnimationDrawWidthArray()
+	{
 		return walkAnimationDrawWidthArray;
 	}
 
-	public  int[] getWalkAnimationDrawXArray() {
+	public  int[] getWalkAnimationDrawHeightArray() {
+		return walkAnimationDrawHeightArray;
+	}
+
+	public int[] getWalkAnimationDrawXArray()
+	{
 		return walkAnimationDrawXArray;
 	}
+	
+	public  int[] getWalkAnimationDrawYArray() {
+		return walkAnimationDrawYArray;
+	}
+
+	
 	
 
 	
