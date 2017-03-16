@@ -15,6 +15,7 @@ public class Animation
 	private int arraySize = 0;
 	private  int playerDrawWidth = 0,playerDrawHeight = 0,playerDrawY = 0, playerDrawX = 0;
 	
+	
 	//class that holds all animation methods.
 	public Animation()
 	{
@@ -25,13 +26,17 @@ public class Animation
 		
 	}
 	/**
-	 * Animates the walk cycle.
-	 * @param xDrawArray An int that controls where the draw x is.
-	 * @param yDrawArray An int that controls where the draw y is.
-	 * @param widthDrawArray An int that controls where the draw width is.
-	 * @param heightDrawArray An int that controls where the draw height is.
+	 * 
+	 * @param standingDrawX The int for a draw x for the standing sprite
+	 * @param standingDrawY The int for a draw y for the standing sprite
+	 * @param standingDrawWidth The int for a draw width for the standing sprite
+	 * @param standingDrawHeight The int for a draw height for the standing sprite
+	 * @param xDrawArray the array that holds all the x draw positions 
+	 * @param yDrawArray the array that holds all the y draw positions
+	 * @param widthDrawArray the array that holds all the width draw positions
+	 * @param heightDrawArray the array that holds all the height draw positions
 	 */
-	public void animateWalk( int[] xDrawArray, int[] yDrawArray, int[] widthDrawArray, int[] heightDrawArray)
+	public void animateWalk(int standingDrawX, int standingDrawY, int standingDrawWidth, int standingDrawHeight, int[] xDrawArray, int[] yDrawArray, int[] widthDrawArray, int[] heightDrawArray)
 	{
 		
 		
@@ -61,10 +66,10 @@ public class Animation
 						}
 						else
 						{
-							playerDrawX = xDrawArray[0];
-							playerDrawY = yDrawArray[0];
-							playerDrawWidth = widthDrawArray[0];
-							playerDrawHeight = heightDrawArray[0];
+							playerDrawX = standingDrawX;
+							playerDrawY = standingDrawY;
+							playerDrawWidth = standingDrawWidth;
+							playerDrawHeight = standingDrawHeight;
 							
 						}
 						

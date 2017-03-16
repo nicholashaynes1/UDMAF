@@ -28,38 +28,32 @@ public class Player
 	private  int[] walkAnimationDrawXArray;
 	private  int[] walkAnimationDrawYArray;
 	
-	
-	
-	
+	private int standingPosWidth = 200, standingPosHeight = 400,standingPosX = 0,StandingPosY = 250;
+
 	public Player()
 	{
 		//Array that controls the width
-		walkAnimationDrawWidthArray = new int[4];
-		walkAnimationDrawWidthArray[0] = 200;
-		walkAnimationDrawWidthArray[1] = 200;
+		walkAnimationDrawWidthArray = new int[3];
+		walkAnimationDrawWidthArray[0] = 220;
+		walkAnimationDrawWidthArray[1] = 220;
 		walkAnimationDrawWidthArray[2] = 220;
-		walkAnimationDrawWidthArray[3] = 200;
 		
 		//Array that controls the height
-		walkAnimationDrawHeightArray = new int[4];
-		walkAnimationDrawHeightArray[0] = 400;
+		walkAnimationDrawHeightArray = new int[3];
+		walkAnimationDrawHeightArray[0] = 250;
 		walkAnimationDrawHeightArray[1] = 250;
 		walkAnimationDrawHeightArray[2] = 250;
-		walkAnimationDrawHeightArray[3] = 30;
-		
 		//Array that controls the x
-		walkAnimationDrawXArray = new int[4];
+		walkAnimationDrawXArray = new int[3];
 		walkAnimationDrawXArray[0] = 0;
-		walkAnimationDrawXArray[1] = 210;
-		walkAnimationDrawXArray[2] = 195;
-		walkAnimationDrawXArray[3] = 0;
+		walkAnimationDrawXArray[1] = 195;
+		walkAnimationDrawXArray[2] = 410;
 		
 		//Array that controls the y
-		walkAnimationDrawYArray = new int [4];
-		walkAnimationDrawYArray[0] = 250;
+		walkAnimationDrawYArray = new int [3];
+		walkAnimationDrawYArray[0] = 0;
 		walkAnimationDrawYArray[1] = 0;
 		walkAnimationDrawYArray[2] = 0;
-		walkAnimationDrawYArray[3] = 0;
 		
 		
 		
@@ -157,10 +151,20 @@ public class Player
 		return walkAnimationDrawYArray;
 	}
 
-	
-	
+	public int getStandingPosX() {
+		return standingPosX;
+	}
 
+	public int getStandingPosY() {
+		return StandingPosY;
+	}
 	
-	
+	public int getStandingPosWidth() {
+		return standingPosWidth;
+	}
+
+	public int getStandingPosHeight() {
+		return standingPosHeight;
+	}	
 	
 }

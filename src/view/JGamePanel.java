@@ -52,7 +52,7 @@ public class JGamePanel extends JPanel
 		animationClass = new Animation();
 		
 		//Calling the animation class  
-		animationClass.animateWalk(player.getWalkAnimationDrawXArray(),player.getWalkAnimationDrawYArray(), player.getWalkAnimationDrawWidthArray(),player.getWalkAnimationDrawHeightArray());
+		animationClass.animateWalk(player.getStandingPosX(), player.getStandingPosY(), player.getStandingPosWidth(), player.getStandingPosHeight(), player.getWalkAnimationDrawXArray(),player.getWalkAnimationDrawYArray(), player.getWalkAnimationDrawWidthArray(),player.getWalkAnimationDrawHeightArray());
 		
 		setupPanel();
 		setupLayout();
@@ -83,8 +83,9 @@ public class JGamePanel extends JPanel
         {
        	 //finds the player image.
        	 playerImg = ImageIO.read(getClass().getResource("/images/WalkingSpriteSheet.png"));
-//       	 playerImg = playerImg.getSubimage(0,250 , 200, 400); // 500 x 500
-       	 playerImg = playerImg.getSubimage(animationClass.getPlayerDrawX(),animationClass.getPlayerDrawY() , animationClass.getPlayerDrawWidth(), animationClass.getPlayerDrawHeight()); // 500 x 500
+//      	 playerImg = playerImg.getSubimage(0,0 , 220, 250); // 500 x 500
+
+       	        	 playerImg = playerImg.getSubimage(animationClass.getPlayerDrawX(),animationClass.getPlayerDrawY() , animationClass.getPlayerDrawWidth(), animationClass.getPlayerDrawHeight()); // 500 x 500
        	 
        	 //draws the player image.
        	 g.drawImage(playerImg, player.getX(), player.getY(), this);
