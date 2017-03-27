@@ -37,6 +37,8 @@ public class JGamePanel extends JPanel
 	//Animation decleration
 	private Animation animationClass;
 	
+
+	
 	
 	
 	

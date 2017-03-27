@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class Controlls implements KeyListener
 {
 	private static boolean isWalking;
-	
+	private static int moveScreenX = 0, moveScreenY = 0;
 	
 	
 	public Controlls() 
@@ -28,9 +28,13 @@ public class Controlls implements KeyListener
 		int Key = e.getKeyCode();
 		if(Key == KeyEvent.VK_D)
 		{
-			Player.setX(Player.getX() + 1);
-			isWalking = true;
+			if(Player.getX() < 800)
+			{
+				Player.setX(Player.getX() + 10);
+				
+			}
 			
+			isWalking = true;
 		}
 		if(Key == KeyEvent.VK_A)
 		{
