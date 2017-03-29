@@ -3,6 +3,7 @@ package model;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -14,11 +15,12 @@ public class Controlls implements KeyListener
 {
 	private static boolean isWalking;
 	private static int moveScreenX = 0, moveScreenY = 0;
+	private Timer jumpTimer;
 	
 	
 	public Controlls() 
 	{
-		
+		jumpTimer = new Timer();
 	}
 
 	//Checks for a key pressed event
@@ -32,24 +34,36 @@ public class Controlls implements KeyListener
 			{
 				Player.setX(Player.getX() + 10);
 				
+				
+			}
+			else
+			{
+				moveScreenX += 10;
 			}
 			
 			isWalking = true;
 		}
 		if(Key == KeyEvent.VK_A)
 		{
-			Player.setX(Player.getX() - 1);
+			if(Player.getX() > 200)
+			{
+				Player.setX(Player.getX() - 10);
+			
+			
+			}
+			else
+			{
+				moveScreenX -= 10;
+			}
+		
 			isWalking = true;
 		}
-		if(Key == KeyEvent.VK_S)
+		if(Key == KeyEvent.VK_SPACE)
 		{
-			Player.setY(Player.getY() + 1);
-			isWalking = true;
-		}
-		if(Key == KeyEvent.VK_W)
-		{
-			Player.setY(Player.getY() - 1);
-			isWalking = true;
+			Player.setY(Player.getY() - 10);
+			
+			
+			
 		}
 		if(Key == KeyEvent.VK_ESCAPE)
 		{
@@ -70,13 +84,22 @@ public class Controlls implements KeyListener
 		{
 			isWalking = false;
 		}
-		if(Key == KeyEvent.VK_S)
+		if(Key == KeyEvent.VK_SPACE)
 		{
-			isWalking = false;
-		}
-		if(Key == KeyEvent.VK_W)
-		{
-			isWalking = false;
+			jumpTimer.schedule(new TimerTask()
+			{
+
+				@Override
+				public void run() 
+				{
+					Player.setY(Player.getY() + 10);
+					jumpTimer.cancel();
+					
+				}
+		
+			}, 1, 1);
+			
+			
 		}
 		
 		
@@ -92,6 +115,14 @@ public class Controlls implements KeyListener
 	{
 		return isWalking;
 		
+	}
+
+	public static int getMoveScreenX() {
+		return moveScreenX;
+	}
+
+	public static int getMoveScreenY() {
+		return moveScreenY;
 	}
 
 	

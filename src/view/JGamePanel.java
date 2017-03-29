@@ -71,7 +71,7 @@ public class JGamePanel extends JPanel
 		{
 			//Loads in the map
 			img = ImageIO.read(getClass().getResource("/images/testMap.png"));
-			img = img.getSubimage(0, 0, 1920, 1080); // 500 x 500
+			img = img.getSubimage(baseControlls.getMoveScreenX(), 0, 1920, 1080); // 500 x 500
 			g.drawImage(img, 0, 0, this);
 			
 		} catch (IOException e)
