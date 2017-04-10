@@ -59,18 +59,24 @@ public class Controlls implements KeyListener
 		}
 		if(Key == KeyEvent.VK_A)
 		{
-			if(Player.getX() > 200)
+			if(moveScreenX > 0)
 			{
-				Player.setX(Player.getX() - 10);
+				if(Player.getX() > 200)
+				{
+					
+					Player.setX(Player.getX() - 10);
+				
+				
+				}
+				else
+				{
+					moveScreenX -= 10;
+					
+				}
 			
+				isWalking = true;
+			}
 			
-			}
-			else
-			{
-				moveScreenX -= 10;
-			}
-		
-			isWalking = true;
 		}
 		if(Key == KeyEvent.VK_SPACE)
 		{
