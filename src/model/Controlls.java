@@ -17,10 +17,12 @@ public class Controlls implements KeyListener
 	private static boolean isWalking;
 	private static int moveScreenX = 0, moveScreenY = 0;
 	private Timer jumpTimer;
+	private Player player;
 
 	public Controlls() 
 	{
 		jumpTimer = new Timer();
+		player = new Player();
 	}
 
 	//Checks for a key pressed event
@@ -30,6 +32,7 @@ public class Controlls implements KeyListener
 		int Key = e.getKeyCode();
 		if(Key == KeyEvent.VK_D)
 		{
+			player.setPlayerImage("/images/knight_MoveR_strip6.png");
 			isWalking = true;
 			if(moveScreenX <1070)
 			{
@@ -60,18 +63,24 @@ public class Controlls implements KeyListener
 		}
 		if(Key == KeyEvent.VK_A)
 		{
-			if(Player.getX() > 200)
-			{
-				Player.setX(Player.getX() - 10);
-			
-			
-			}
-			else
-			{
-				moveScreenX -= 10;
-			}
-		
 			isWalking = true;
+			player.setPlayerImage("/images/knight_MoveL_strip6.png");
+			if(moveScreenX > 0)
+			{
+				if(Player.getX() > 200)
+				{
+					Player.setX(Player.getX() - 10);
+				
+				
+				}
+				else
+				{
+					moveScreenX -= 10;
+				}
+			}
+			
+		
+			
 		}
 		if(Key == KeyEvent.VK_SPACE)
 		{

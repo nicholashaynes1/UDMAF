@@ -28,13 +28,15 @@ public class Player
 	private  int[] walkAnimationDrawXArray;
 	private  int[] walkAnimationDrawYArray;
 	
-	private int standingPosWidth = 130, standingPosHeight = 116,standingPosX = 0,StandingPosY = 0;
+	private int standingPosWidth = 100, standingPosHeight = 116,standingPosX = 0,StandingPosY = 0;
+	
+	private static String playerImage = "/images/knight_MoveR_strip6.png";
 
 	public Player()
 	{
 		//Array that controls the width
 		walkAnimationDrawWidthArray = new int[6];
-		walkAnimationDrawWidthArray[0] = 130;
+		walkAnimationDrawWidthArray[0] = 100;
 		walkAnimationDrawWidthArray[1] = 100;
 		walkAnimationDrawWidthArray[2] = 100;
 		walkAnimationDrawWidthArray[3] = 100;
@@ -53,11 +55,11 @@ public class Player
 		//Array that controls the x
 		walkAnimationDrawXArray = new int[6];
 		walkAnimationDrawXArray[0] = 0;
-		walkAnimationDrawXArray[1] = 140;
-		walkAnimationDrawXArray[2] = 260;
-		walkAnimationDrawXArray[3] = 370;
-		walkAnimationDrawXArray[4] = 480;
-		walkAnimationDrawXArray[5] = 590;
+		walkAnimationDrawXArray[1] = 135;
+		walkAnimationDrawXArray[2] = 255;
+		walkAnimationDrawXArray[3] = 365;
+		walkAnimationDrawXArray[4] = 475;
+		walkAnimationDrawXArray[5] = 585;
 		
 		//Array that controls the y
 		walkAnimationDrawYArray = new int [6];
@@ -179,6 +181,14 @@ public class Player
 
 	public int getStandingPosHeight() {
 		return standingPosHeight;
+	}
+
+	public String getPlayerImage() {
+		return playerImage;
+	}
+
+	public void setPlayerImage(String playerImage) {
+		this.playerImage = playerImage;
 	}	
 	
 }
