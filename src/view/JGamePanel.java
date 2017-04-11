@@ -84,11 +84,9 @@ public class JGamePanel extends JPanel
         try 
         {
        	 //finds the player image.
-       	 playerImg = ImageIO.read(getClass().getResource("/images/WalkingSpriteSheet.png"));
-//      	 playerImg = playerImg.getSubimage(0,0 , 220, 250); // 500 x 500
+       	 playerImg = ImageIO.read(getClass().getResource("/images/knight_MoveR_strip6.png"));
+       	 playerImg = playerImg.getSubimage(animationClass.getPlayerDrawX(),animationClass.getPlayerDrawY() , animationClass.getPlayerDrawWidth(), animationClass.getPlayerDrawHeight()); // 500 x 500
 
-       	        	 playerImg = playerImg.getSubimage(animationClass.getPlayerDrawX(),animationClass.getPlayerDrawY() , animationClass.getPlayerDrawWidth(), animationClass.getPlayerDrawHeight()); // 500 x 500
-       	 
        	 //draws the player image.
        	 g.drawImage(playerImg, player.getX(), player.getY(), this);
         } 

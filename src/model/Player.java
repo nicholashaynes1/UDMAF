@@ -28,32 +28,46 @@ public class Player
 	private  int[] walkAnimationDrawXArray;
 	private  int[] walkAnimationDrawYArray;
 	
-	private int standingPosWidth = 200, standingPosHeight = 400,standingPosX = 0,StandingPosY = 250;
+	private int standingPosWidth = 130, standingPosHeight = 116,standingPosX = 0,StandingPosY = 0;
 
 	public Player()
 	{
 		//Array that controls the width
-		walkAnimationDrawWidthArray = new int[3];
-		walkAnimationDrawWidthArray[0] = 220;
-		walkAnimationDrawWidthArray[1] = 220;
-		walkAnimationDrawWidthArray[2] = 220;
+		walkAnimationDrawWidthArray = new int[6];
+		walkAnimationDrawWidthArray[0] = 130;
+		walkAnimationDrawWidthArray[1] = 100;
+		walkAnimationDrawWidthArray[2] = 100;
+		walkAnimationDrawWidthArray[3] = 100;
+		walkAnimationDrawWidthArray[4] = 100;
+		walkAnimationDrawWidthArray[5] = 100;
 		
 		//Array that controls the height
-		walkAnimationDrawHeightArray = new int[3];
-		walkAnimationDrawHeightArray[0] = 250;
-		walkAnimationDrawHeightArray[1] = 250;
-		walkAnimationDrawHeightArray[2] = 250;
+		walkAnimationDrawHeightArray = new int[6];
+		walkAnimationDrawHeightArray[0] = 116;
+		walkAnimationDrawHeightArray[1] = 116;
+		walkAnimationDrawHeightArray[2] = 116;
+		walkAnimationDrawHeightArray[3] = 116;
+		walkAnimationDrawHeightArray[4] = 116;
+		walkAnimationDrawHeightArray[5] = 116;
+		
 		//Array that controls the x
-		walkAnimationDrawXArray = new int[3];
+		walkAnimationDrawXArray = new int[6];
 		walkAnimationDrawXArray[0] = 0;
-		walkAnimationDrawXArray[1] = 195;
-		walkAnimationDrawXArray[2] = 410;
+		walkAnimationDrawXArray[1] = 140;
+		walkAnimationDrawXArray[2] = 260;
+		walkAnimationDrawXArray[3] = 370;
+		walkAnimationDrawXArray[4] = 480;
+		walkAnimationDrawXArray[5] = 590;
 		
 		//Array that controls the y
-		walkAnimationDrawYArray = new int [3];
+		walkAnimationDrawYArray = new int [6];
 		walkAnimationDrawYArray[0] = 0;
 		walkAnimationDrawYArray[1] = 0;
 		walkAnimationDrawYArray[2] = 0;
+		walkAnimationDrawYArray[3] = 0;
+		walkAnimationDrawYArray[4] = 0;
+		walkAnimationDrawYArray[5] = 0;
+		
 		
 		
 		
