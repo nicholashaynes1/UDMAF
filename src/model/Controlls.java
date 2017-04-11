@@ -30,6 +30,7 @@ public class Controlls implements KeyListener
 		int Key = e.getKeyCode();
 		if(Key == KeyEvent.VK_D)
 		{
+			isWalking = true;
 			if(moveScreenX <1070)
 			{
 				if(Player.getX() < 800)
@@ -43,7 +44,7 @@ public class Controlls implements KeyListener
 					moveScreenX += 10;
 				}
 				
-				isWalking = true;
+				
 			}
 			else
 			{
@@ -59,24 +60,18 @@ public class Controlls implements KeyListener
 		}
 		if(Key == KeyEvent.VK_A)
 		{
-			if(moveScreenX > 0)
+			if(Player.getX() > 200)
 			{
-				if(Player.getX() > 200)
-				{
-					
-					Player.setX(Player.getX() - 10);
-				
-				
-				}
-				else
-				{
-					moveScreenX -= 10;
-					
-				}
+				Player.setX(Player.getX() - 10);
 			
-				isWalking = true;
+			
 			}
-			
+			else
+			{
+				moveScreenX -= 10;
+			}
+		
+			isWalking = true;
 		}
 		if(Key == KeyEvent.VK_SPACE)
 		{

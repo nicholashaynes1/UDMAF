@@ -77,7 +77,7 @@ public class Animation
 						
 					}
 					
-				}, 100, 100);
+				}, 110, 110);
 		
 	}
 	
