@@ -13,6 +13,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -37,6 +38,7 @@ public class JGamePanel extends JPanel
 	//Animation decleration
 	private Animation animationClass;
 	
+	private  ArrayList<Image> enemyArrayList;
 
 	
 	
@@ -55,6 +57,8 @@ public class JGamePanel extends JPanel
 		
 		//Calling the animation class  
 		animationClass.animateWalk(player.getStandingPosX(), player.getStandingPosY(), player.getStandingPosWidth(), player.getStandingPosHeight(), player.getWalkAnimationDrawXArray(),player.getWalkAnimationDrawYArray(), player.getWalkAnimationDrawWidthArray(),player.getWalkAnimationDrawHeightArray());
+		
+		enemyArrayList = new ArrayList<Image>(0);
 		
 		setupPanel();
 		setupLayout();
@@ -94,13 +98,44 @@ public class JGamePanel extends JPanel
         {
        	 e.printStackTrace();
         }
+        
+       
+        //enemy drawings
+		while(enemyArrayList.size() <= 2)
+		{
+			
+			enemyArrayList.add(playerImg);
+		}
+		
+		for(int i = 0; i < enemyArrayList.size(); i++)
+		{
+			try 
+	        {
+	       	 //finds the player image.
+	       	 playerImg = ImageIO.read(getClass().getResource(player.getPlayerImage()));
+	       	 playerImg = playerImg.getSubimage(animationClass.getPlayerDrawX(),animationClass.getPlayerDrawY() , animationClass.getPlayerDrawWidth(), animationClass.getPlayerDrawHeight()); // 500 x 500
+
+	       	 //draws the player image.
+	       	 g.drawImage(playerImg, k, l, this);
+	        } 
+	        catch (IOException e1) 
+	        {
+	       	 e1.printStackTrace();
+	        }
+			k+=100;
+			l+=100;
+		}
+		
          
 		
 		repaint();
      }
 	
 	
-	
+	private void drawEnemies(int amount, String enemies)
+	{
+		
+	}
 	
 	private void setupPanel()
 	{
