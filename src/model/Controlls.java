@@ -18,11 +18,13 @@ public class Controlls implements KeyListener
 	private static int moveScreenX = 0, moveScreenY = 0;
 	private Timer jumpTimer;
 	private Player player;
+	private Enemies enemy;
 
 	public Controlls() 
 	{
 		jumpTimer = new Timer();
 		player = new Player();
+		enemy = new Enemies();
 	}
 
 	//Checks for a key pressed event
@@ -44,6 +46,7 @@ public class Controlls implements KeyListener
 				}
 				else
 				{
+					Enemies.setEnemyX(Enemies.getEnemyX() - 10);
 					moveScreenX += 10;
 				}
 				
@@ -70,12 +73,11 @@ public class Controlls implements KeyListener
 				if(Player.getX() > 200)
 				{
 					Player.setX(Player.getX() - 10);
-				
-				
 				}
 				else
 				{
 					moveScreenX -= 10;
+					Enemies.setEnemyX(Enemies.getEnemyX() + 10);
 				}
 			}
 			

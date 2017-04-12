@@ -19,6 +19,7 @@ import java.util.TimerTask;
 
 import model.Animation;
 import model.Controlls;
+import model.Enemies;
 import model.Player;
 
 
@@ -29,15 +30,19 @@ public class JGamePanel extends JPanel
 	
 	//Class declerations
 	private static Player player;
+	private static Enemies enemy;
 	private Controlls baseControlls;
 	
 	//Player Image stuff
 	private BufferedImage img;
 	private BufferedImage playerImg;
+	private BufferedImage enemyImg;
+	
 	
 	//Animation decleration
 	private Animation animationClass;
 	
+	//Array list to keep track of enemie count.
 	private  ArrayList<Image> enemyArrayList;
 
 	
@@ -52,12 +57,14 @@ public class JGamePanel extends JPanel
 		
 		//Class instantiation
 		player = new Player();
+		enemy = new Enemies(); 
 		baseControlls = new Controlls();
 		animationClass = new Animation();
 		
 		//Calling the animation class  
 		animationClass.animateWalk(player.getStandingPosX(), player.getStandingPosY(), player.getStandingPosWidth(), player.getStandingPosHeight(), player.getWalkAnimationDrawXArray(),player.getWalkAnimationDrawYArray(), player.getWalkAnimationDrawWidthArray(),player.getWalkAnimationDrawHeightArray());
-		
+
+		//array list to keep track of how many enemies to use
 		enemyArrayList = new ArrayList<Image>(0);
 		
 		setupPanel();
@@ -99,7 +106,7 @@ public class JGamePanel extends JPanel
        	 e.printStackTrace();
         }
         
-       
+        int s = 0;
         //enemy drawings
 		while(enemyArrayList.size() <= 2)
 		{
@@ -109,21 +116,24 @@ public class JGamePanel extends JPanel
 		
 		for(int i = 0; i < enemyArrayList.size(); i++)
 		{
+			
 			try 
 	        {
+				
 	       	 //finds the player image.
-	       	 playerImg = ImageIO.read(getClass().getResource(player.getPlayerImage()));
-	       	 playerImg = playerImg.getSubimage(animationClass.getPlayerDrawX(),animationClass.getPlayerDrawY() , animationClass.getPlayerDrawWidth(), animationClass.getPlayerDrawHeight()); // 500 x 500
+	       	 enemyImg = ImageIO.read(getClass().getResource(enemy.getEnemyImage()));
+	       	 enemyImg = enemyImg.getSubimage(0,0,100,116); // 500 x 500
 
 	       	 //draws the player image.
-	       	 g.drawImage(playerImg, k, l, this);
+	       	 g.drawImage(enemyImg, enemy.getEnemyX(), 500, this);
+	       	 
 	        } 
 	        catch (IOException e1) 
 	        {
 	       	 e1.printStackTrace();
 	        }
-			k+=100;
-			l+=100;
+			
+			s += 100;
 		}
 		
          
@@ -132,10 +142,6 @@ public class JGamePanel extends JPanel
      }
 	
 	
-	private void drawEnemies(int amount, String enemies)
-	{
-		
-	}
 	
 	private void setupPanel()
 	{
