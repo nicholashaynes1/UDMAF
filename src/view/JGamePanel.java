@@ -122,7 +122,7 @@ public class JGamePanel extends JPanel
 				
 	       	 //finds the player image.
 	       	 enemyImg = ImageIO.read(getClass().getResource(enemy.getEnemyImage()));
-	       	 enemyImg = enemyImg.getSubimage(0,0,100,116); // 500 x 500
+	       	 enemyImg = enemyImg.getSubimage(40,0,60,100); // 500 x 500
 
 	       	 //draws the player image.
 	       	 g.drawImage(enemyImg, enemy.getEnemyX(), 500, this);
