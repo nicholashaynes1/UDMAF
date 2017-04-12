@@ -62,8 +62,9 @@ public class JGamePanel extends JPanel
 		animationClass = new Animation();
 		
 		//Calling the animation class  
+		animationClass.enemyWalkAnimation(enemy.getEnemyXArray());
 		animationClass.animateWalk(player.getStandingPosX(), player.getStandingPosY(), player.getStandingPosWidth(), player.getStandingPosHeight(), player.getWalkAnimationDrawXArray(),player.getWalkAnimationDrawYArray(), player.getWalkAnimationDrawWidthArray(),player.getWalkAnimationDrawHeightArray());
-
+		
 		//array list to keep track of how many enemies to use
 		enemyArrayList = new ArrayList<Image>(0);
 		
@@ -108,7 +109,7 @@ public class JGamePanel extends JPanel
         
         int s = 0;
         //enemy drawings
-		while(enemyArrayList.size() <= 2)
+		while(enemyArrayList.size() <= 0)
 		{
 			
 			enemyArrayList.add(playerImg);
@@ -122,7 +123,7 @@ public class JGamePanel extends JPanel
 				
 	       	 //finds the player image.
 	       	 enemyImg = ImageIO.read(getClass().getResource(enemy.getEnemyImage()));
-	       	 enemyImg = enemyImg.getSubimage(40,0,60,100); // 500 x 500
+	       	 enemyImg = enemyImg.getSubimage(animationClass.getEnemyDrawX(),0,60,100); // 500 x 500
 
 	       	 //draws the player image.
 	       	 g.drawImage(enemyImg, enemy.getEnemyX(), 500, this);

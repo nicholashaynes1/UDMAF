@@ -10,16 +10,20 @@ import java.util.TimerTask;
 public class Animation
 {
 	private Timer walkTimer;
+	private Timer enemyWalkTimer;
 	private Controlls baseControlls;
 	private int animationFrame = 0;
+	private int enemyWalkAnimationFrame = 0;
 	private int arraySize = 0;
-	private  int playerDrawWidth = 0,playerDrawHeight = 0,playerDrawY = 0, playerDrawX = 0;
+	private int playerDrawWidth = 0,playerDrawHeight = 0,playerDrawY = 0, playerDrawX = 0;
+	private int enemyDrawX = 0;
 	
 	
 	//class that holds all animation methods.
 	public Animation()
 	{
 		walkTimer = new Timer();
+		enemyWalkTimer = new Timer();
 		baseControlls = new Controlls();
 		
 		
@@ -80,6 +84,34 @@ public class Animation
 				}, 110, 110);
 		
 	}
+	public void enemyWalkAnimation(int[] enemyDrawXArray)
+	{
+		enemyWalkTimer.scheduleAtFixedRate(new TimerTask()
+		{
+			@Override
+			public void run()
+			{
+				
+					
+					if(enemyWalkAnimationFrame == enemyDrawXArray.length)
+					{
+						enemyWalkAnimationFrame = 0;
+					}
+					else
+					{
+						enemyDrawX = enemyDrawXArray[enemyWalkAnimationFrame];
+						enemyWalkAnimationFrame++;
+					}
+				
+				
+				
+				
+			}
+			
+		}, 110, 110);
+		
+		
+	}
 	
 	public  int getPlayerDrawX()
 	{
@@ -97,6 +129,14 @@ public class Animation
 	public int getPlayerDrawWidth()
 	{
 		return playerDrawWidth;
+	}
+	public int getEnemyDrawX()
+	{
+		return enemyDrawX;
+	}
+	public void setEnemyDrawX(int enemyDrawX)
+	{
+		this.enemyDrawX = enemyDrawX;
 	}
 
 	
