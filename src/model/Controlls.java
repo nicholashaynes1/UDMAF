@@ -18,13 +18,13 @@ public class Controlls implements KeyListener
 	private static int moveScreenX = 0, moveScreenY = 0;
 	private Timer jumpTimer;
 	private Player player;
-	private Enemies enemy;
+//	private Enemies enemy;
 
 	public Controlls() 
 	{
 		jumpTimer = new Timer();
 		player = new Player();
-		enemy = new Enemies();
+//		enemy = new Enemies();
 	}
 
 	//Checks for a key pressed event

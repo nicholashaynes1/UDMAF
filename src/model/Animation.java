@@ -112,6 +112,34 @@ public class Animation
 		
 		
 	}
+	public void enemyWalkAnimationLeft(int[] enemyDrawXArray)
+	{
+		enemyWalkTimer.scheduleAtFixedRate(new TimerTask()
+		{
+			@Override
+			public void run()
+			{
+				
+					
+					if(enemyWalkAnimationFrame == enemyDrawXArray.length)
+					{
+						enemyWalkAnimationFrame = 0;
+					}
+					else
+					{
+						enemyDrawX = enemyDrawXArray[enemyWalkAnimationFrame];
+						enemyWalkAnimationFrame++;
+					}
+				
+				
+				
+				
+			}
+			
+		}, 110, 110);
+		
+		
+	}
 	
 	public  int getPlayerDrawX()
 	{

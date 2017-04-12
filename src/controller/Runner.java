@@ -7,6 +7,8 @@ public class Runner
 	{
 		Controller myController = new Controller();
 		myController.start();
+		
+		
 
 	}
 

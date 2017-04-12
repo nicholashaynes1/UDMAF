@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Player
 {
 	//x and y to hold the player position
-	private static int X , Y = 500;
+	private static int X = 960, Y = 500;
 	private static boolean saveState = false;
 	//a file scanner to collect player info
 	private Scanner playerFileScanner;

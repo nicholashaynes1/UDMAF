@@ -37,13 +37,15 @@ public class JGamePanel extends JPanel
 	private BufferedImage img;
 	private BufferedImage playerImg;
 	private BufferedImage enemyImg;
+	private BufferedImage enemyImgLeft;
 	
+	private int enemyStart;
 	
 	//Animation decleration
 	private Animation animationClass;
 	
 	//Array list to keep track of enemie count.
-	private  ArrayList<Image> enemyArrayList;
+	private  ArrayList<Integer> enemyArrayList;
 
 	
 	
@@ -63,16 +65,31 @@ public class JGamePanel extends JPanel
 		
 		//Calling the animation class  
 		animationClass.enemyWalkAnimation(enemy.getEnemyXArray());
+		animationClass.enemyWalkAnimationLeft(enemy.getEnemyLeftXArray());
 		animationClass.animateWalk(player.getStandingPosX(), player.getStandingPosY(), player.getStandingPosWidth(), player.getStandingPosHeight(), player.getWalkAnimationDrawXArray(),player.getWalkAnimationDrawYArray(), player.getWalkAnimationDrawWidthArray(),player.getWalkAnimationDrawHeightArray());
 		
 		//array list to keep track of how many enemies to use
-		enemyArrayList = new ArrayList<Image>(0);
+		enemyArrayList = new ArrayList<Integer>(0);
 		
+//		enemyStartRanges();
 		setupPanel();
 		setupLayout();
 		
 		
-	}								
+	}
+	
+	private void enemyStartRanges()
+	{
+		
+		if(enemy.getEnemyX() < 50)
+		{
+			enemy.setEnemyX(enemy.getEnemyX() + 100);
+		}
+		else
+		{
+			enemy.setEnemyX(enemy.getEnemyX() + 600);
+		}
+	}
 	@Override
      public void paintComponent(Graphics g) 
 	 {
@@ -107,37 +124,33 @@ public class JGamePanel extends JPanel
        	 e.printStackTrace();
         }
         
-        int s = 0;
-        //enemy drawings
-		while(enemyArrayList.size() <= 0)
-		{
-			
-			enemyArrayList.add(playerImg);
-		}
-		
-		for(int i = 0; i < enemyArrayList.size(); i++)
-		{
+        
 			
 			try 
 	        {
 				
-	       	 //finds the player image.
+	       	 //finds the enemy image.
 	       	 enemyImg = ImageIO.read(getClass().getResource(enemy.getEnemyImage()));
 	       	 enemyImg = enemyImg.getSubimage(animationClass.getEnemyDrawX(),0,60,100); // 500 x 500
+	       	 
+	       	enemyImgLeft = ImageIO.read(getClass().getResource(enemy.getEnemyImageLeft()));
+	       	enemyImgLeft = enemyImgLeft.getSubimage(animationClass.getEnemyDrawX(),0,60,100); // 500 x 500
+	       	
 
-	       	 //draws the player image.
+	       	 //draws the enemy image.
 	       	 g.drawImage(enemyImg, enemy.getEnemyX(), 500, this);
+	       	 enemyArrayList.add(0);
+	       	
+	       	 g.drawImage(enemyImgLeft, enemy.getEnemyX() + 1920, 500, this);
+	       	 enemyArrayList.add(0);
+	       	 
 	       	 
 	        } 
 	        catch (IOException e1) 
 	        {
 	       	 e1.printStackTrace();
 	        }
-			
-			s += 100;
-		}
 		
-         
 		
 		repaint();
      }
@@ -152,6 +165,8 @@ public class JGamePanel extends JPanel
 		
 		
 	}
+	
+	
 	
 	
 	private void setupLayout()
